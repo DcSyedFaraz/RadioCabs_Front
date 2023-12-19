@@ -1,0 +1,24 @@
+<main class="p-6">
+
+ <!-- data.component.html -->
+
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white border border-gray-300">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border-b">Name</th>
+        <th class="py-2 px-4 border-b">ContactPerson</th>
+        <!-- Add more columns as needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data" class="text-center">
+        <td class="py-2 px-4 border-b">{{ item.Name }}</td>
+        <td class="py-2 px-4 border-b">{{ item.ContactPerson }}</td>
+        <!-- Display other properties as needed -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</main>

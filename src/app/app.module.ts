@@ -11,6 +11,11 @@ import { LayoutComponent } from './dashboard/admin/layout/layout.component';
 import { UserdashComponent } from './dashboard/user/userdash/userdash.component';
 import { CompdashComponent } from './dashboard/company/compdash/compdash.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+import { ModuleModule } from './module/module.module';
+import { CompanyComponent } from './dashboard/admin/company/company.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +24,19 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     LoginComponent,
     LayoutComponent,
     UserdashComponent,
-    CompdashComponent
+    CompdashComponent,
+    CompanyComponent
   ],
   imports: [
+    ModuleModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+
   ],
   providers: [
     {

@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', '../../assets/css/theme.min.css', '../../assets/css/icons.min.css']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: AuthService, private router:Router) {
+  constructor(private fb: FormBuilder, private service: AuthService, private router: Router, private toastr: ToastrService) {
     this.loginForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
@@ -23,28 +24,44 @@ export class LoginComponent implements OnInit {
     console.log('User Roles:', userRoles);
   }
 
- onSubmit() {
-  this.service.login(this.loginForm.value).subscribe(
-    (response: any) => {
-      const authToken = response?.token; // Adjust this based on your actual response structure
+  onSubmit() {
+    this.service.login(this.loginForm.value).subscribe(
+      (response: any) => {
+        const authToken = response?.token;
 
-      if (authToken) {
-        console.log("Login Data Successfully");
-        localStorage.setItem('logintoken', authToken);
-        // this.router.navigate(["admin/dashboard"]);
-      } else {
-        console.error("Token not found in the response.");
+        if (authToken) {
+          this.toastr.success("Login Successfully");
+          localStorage.setItem('logintoken', authToken);
+          // this.router.navigate(["admin/dashboard"]);
+          const roles = this.service.getUserRoles();
+          if (roles.includes('admin')) {
+
+            this.router.navigate(["admin"]);
+
+          } else if (roles.includes('user')) {
+
+            this.router.navigate(["user"]);
+
+          } else {
+
+            this.router.navigate(["company"]);
+          }
+
+        } else {
+          this.toastr.error("Token not found in the response.");
+        }
+      },
+      error => {
+        console.log(error.error.message);
+
+        this.toastr.error(error.error.message, "Login failed:");
       }
-    },
-    error => {
-      console.error("Login failed:", error);
-    }
-  );
-  console.log('Form submitted:', this.loginForm.value);
-}
+    );
+    console.log('Form submitted:', this.loginForm.value);
+  }
 
 
-  getData(){
+  getData() {
     this.service.getData().subscribe(
       a => {
         console.log(a);
