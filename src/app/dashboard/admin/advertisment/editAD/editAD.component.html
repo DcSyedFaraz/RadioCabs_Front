@@ -1,0 +1,57 @@
+<!-- edit-Advert.component.html -->
+<main class="p-6">
+  <div class="container mx-auto mt-8">
+      <h2 class="text-2xl font-bold mb-6">Edit Company</h2>
+      <form (ngSubmit)="saveChanges()">
+        <div  *ngIf="Advert">
+
+          <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Company Name</mat-label>
+              <input matInput placeholder="Company Name" [(ngModel)]="Advert.CompanyName" name="companyName" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Designation</mat-label>
+              <input matInput placeholder="Designation" [(ngModel)]="Advert.Designation" name="designation" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Address" [(ngModel)]="Advert.Address" name="address" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Mobile</mat-label>
+              <input matInput placeholder="Mobile" [(ngModel)]="Advert.Mobile" name="mobile" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Telephone</mat-label>
+              <input matInput placeholder="Telephone" [(ngModel)]="Advert.telephone" name="telephone">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Fax Number</mat-label>
+              <input matInput placeholder="Fax Number" [(ngModel)]="Advert.FaxNumber" name="faxNumber">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" [(ngModel)]="Advert.Email" name="email" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Description</mat-label>
+              <input matInput placeholder="Description" [(ngModel)]="Advert.Description" name="description" required>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div class="mt-6">
+          <button mat-raised-button color="primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+</main>

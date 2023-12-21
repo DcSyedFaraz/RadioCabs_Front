@@ -33,6 +33,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   appUrl = "https://localhost:7248/";
+
   static redirectToLogin(router: Router, url?: string) {
     if (url) {
       router.navigate([url]);
@@ -50,11 +51,22 @@ export class AuthService {
   register(data: any) {
     return this.http.post(this.appUrl + "api/Company/register-company", data);
   }
+
   login(data: any) {
     return this.http.post(this.appUrl + "Authenticate/login", data);
   }
   getData() {
-    return this.http.get(this.appUrl + "api/COmpany/Companies")
+    return this.http.get(this.appUrl + "api/Company/Companies")
+  }
+
+  editData(ID: any) {
+    return this.http.get(this.appUrl + "api/Company/"+ID)
+  }
+  deleteData(ID: any){
+    return this.http.delete(this.appUrl + 'api/Company/delete-company/'+ID)
+  }
+  updateData(ID: any,data: any) {
+    return this.http.put(this.appUrl + "api/Company/"+ID, data);
   }
   // auth.service.ts
   private static getUserRolesFromToken(): string[] {

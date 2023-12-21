@@ -7,6 +7,9 @@ import { UserdashComponent } from './dashboard/user/userdash/userdash.component'
 import { CompdashComponent } from './dashboard/company/compdash/compdash.component';
 import { CompanyComponent } from './dashboard/admin/company/company.component';
 import { authGuard } from './auth.guard';
+import { EditComponent } from './dashboard/admin/company/edit/edit.component';
+import { AdvertismentComponent } from './dashboard/admin/advertisment/advertisment.component';
+import { EditADComponent } from './dashboard/admin/advertisment/editAD/editAD.component';
 
 const routes: Routes = [
   { path: "", component: RegisterComponent },
@@ -16,7 +19,10 @@ const routes: Routes = [
     canActivate: [authGuard],
     data: { expectedRole: 'admin' },
     children: [
-      { path: "company", component: CompanyComponent }
+      { path: "company", component: CompanyComponent },
+      {path: "company/edit/:id", component: EditComponent},
+      { path: "advertisment", component: AdvertismentComponent },
+      {path: "advertisment/edit/:id", component: EditADComponent},
     ]
   },
   {

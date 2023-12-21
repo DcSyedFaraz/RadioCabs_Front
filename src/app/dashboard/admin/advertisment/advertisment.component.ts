@@ -1,41 +1,34 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/services/auth.service';
-
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
-  selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css'],
+  selector: 'app-advertisment',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink],
+  imports: [MatTableModule, MatIconModule, RouterLink, CommonModule],
+  templateUrl: './advertisment.component.html',
+  styleUrls: ['./advertisment.component.css'],
 })
-export class CompanyComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'name', 'ContactPerson', 'Designation', 'FaxNumber', 'Email', 'actions'];
-  dataSource: PeriodicElement[] = [];
+export class AdvertismentComponent implements OnInit {
+  displayedColumns: string[] = ['Id', 'name', 'mobile', 'Designation', 'telephone', 'description', 'actions'];
+  dataSource: any;
 
-  constructor(private service: AuthService, private toastr: ToastrService) { }
+  constructor(private service: AdminService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.gettingdata();
   }
 
   gettingdata() {
-    this.service.getData()
+    this.service.getAD()
       .subscribe((data) => {
-        console.log(data);
 
-        this.dataSource = data as PeriodicElement[];
+        this.dataSource = data;
+        console.log(this.dataSource);
       },
         (error) => {
           console.error('Error fetching data:', error);
@@ -50,7 +43,7 @@ export class CompanyComponent implements OnInit {
     if (confirm('are you sure?')) {
       event.target.innerText = "Deleting...";
 
-      this.service.deleteData(id).subscribe((res: any) => {
+      this.service.deleteAD(id).subscribe((res: any) => {
         this.toastr.success(res.message)
         console.log(res);
 
@@ -77,4 +70,3 @@ export class CompanyComponent implements OnInit {
   //   );
   // }
 }
-

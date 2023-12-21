@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ModuleModule } from './module/module.module';
 import { CompanyComponent } from './dashboard/admin/company/company.component';
+import { EditComponent } from './dashboard/admin/company/edit/edit.component';
+import { EditADComponent } from './dashboard/admin/advertisment/editAD/editAD.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CompanyComponent } from './dashboard/admin/company/company.component';
     LayoutComponent,
     UserdashComponent,
     CompdashComponent,
-    CompanyComponent
+    EditComponent,
+    EditADComponent
   ],
   imports: [
     ModuleModule,

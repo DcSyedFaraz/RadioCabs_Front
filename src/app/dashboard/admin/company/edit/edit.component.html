@@ -1,0 +1,57 @@
+<!-- edit-company.component.html -->
+<main class="p-6">
+  <div class="container mx-auto mt-8">
+      <h2 class="text-2xl font-bold mb-6">Edit Company</h2>
+      <form (ngSubmit)="saveChanges()">
+        <div  *ngIf="company">
+
+          <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Company Name" [(ngModel)]="company.Name" name="Name" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Contact Person</mat-label>
+              <input matInput placeholder="Contact Person" [(ngModel)]="company.ContactPerson" name="ContactPerson" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Designation</mat-label>
+              <input matInput placeholder="Designation" [(ngModel)]="company.Designation" name="Designation" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Address" [(ngModel)]="company.Address" name="Address" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Mobile</mat-label>
+              <input matInput placeholder="Mobile" [(ngModel)]="company.Mobile" name="Mobile" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Telephone</mat-label>
+              <input matInput placeholder="Telephone" [(ngModel)]="company.Telephone" name="Telephone">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Fax Number</mat-label>
+              <input matInput placeholder="Fax Number" [(ngModel)]="company.FaxNumber" name="FaxNumber">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" [(ngModel)]="company.Email" name="Email" required>
+            </mat-form-field>
+
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <button mat-raised-button color="primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+</main>

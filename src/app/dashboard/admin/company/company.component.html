@@ -1,24 +1,60 @@
 <main class="p-6">
 
- <!-- data.component.html -->
 
-<div class="overflow-x-auto">
-  <table class="min-w-full bg-white border border-gray-300">
-    <thead>
-      <tr>
-        <th class="py-2 px-4 border-b">Name</th>
-        <th class="py-2 px-4 border-b">ContactPerson</th>
-        <!-- Add more columns as needed -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of data" class="text-center">
-        <td class="py-2 px-4 border-b">{{ item.Name }}</td>
-        <td class="py-2 px-4 border-b">{{ item.ContactPerson }}</td>
-        <!-- Display other properties as needed -->
-      </tr>
-    </tbody>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 bg-slate-400">
+
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ContactPerson">
+      <th mat-header-cell *matHeaderCellDef> Contact Person </th>
+      <td mat-cell *matCellDef="let element"> {{element.ContactPerson}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Designation">
+      <th mat-header-cell *matHeaderCellDef> Designation </th>
+      <td mat-cell *matCellDef="let element"> {{element.Designation}} </td>
+    </ng-container>
+    <ng-container matColumnDef="FaxNumber">
+      <th mat-header-cell *matHeaderCellDef> FaxNumber </th>
+      <td mat-cell *matCellDef="let element"> {{element.FaxNumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <!-- Add your action buttons here -->
+        <a routerLink="edit/{{element.Id}}" class="bg-green-500 mx-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Edit</a>
+
+
+        <button (click)="deleteItem($event,element.Id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+          <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" >Delete</mat-icon> -->
+          Delete
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</div>
+
 
 </main>
