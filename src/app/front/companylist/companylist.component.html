@@ -10,60 +10,67 @@
                       <h4><span></span>Online Registering</h4>
                       <h2 class="white">Register Your Company</h2>
                   </div>
-                  <form action="book-ride.php" id="book-taxi-ride">
+                  <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" id="book-taxi-ride">
                       <div class="booking-form">
                           <div class="form-field">
                               <i class="las la-user-tie"></i>
-                              <input type="text" id="full-name" name="full-name" class="form-control"
+                              <input type="text" id="full-name" formControlName="name" class="form-control"
                                   placeholder="Your Name" required>
                           </div>
                           <div class="form-field">
                               <i class="las la-envelope-open"></i>
-                              <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+                              <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email"
                                   required>
                           </div>
                           <div class="form-field">
                               <i class="las la-tags"></i>
                               <select name="package-type" id="type" class="niceSelect">
-                                  <option value="standard">Standard</option>
-                                  <option value="business">Business</option>
-                                  <option value="economy">Economy</option>
-                                  <option value="vip-spacial">VIP Spacial</option>
-                                  <option value="comfort">Comfort</option>
+                                  <option selected hidden>Membership Type</option>
+                                  <option value="Free">Free</option>
+                                  <option value="Standard">Standard</option>
+                                  <option value="Premium">Premium</option>
                               </select>
                           </div>
                           <div class="form-field">
                               <i class="las la-user-friends"></i>
                               <select name="passengers" id="passengers" class="niceSelect">
-                                  <option value="1">1 Person</option>
-                                  <option value="2">2 Person</option>
-                                  <option value="3">3 Person</option>
-                                  <option value="4">4 Person</option>
-                                  <option value="5">5 Person</option>
+                                  <option selected hidden>Payement</option>
+                                  <option value="Quaterly">Quaterly</option>
+                                  <option value="Yearly">Yearly</option>
                               </select>
                           </div>
                           <div class="form-field">
                               <i class="las la-map-marker"></i>
-                              <input type="text" id="start-dest" name="start-dest" class="form-control"
-                                  placeholder="Start Destination" required>
+                              <input type="text" id="start-dest" formControlName="contactPerson" class="form-control"
+                                  placeholder="Contact Person" required>
                           </div>
                           <div class="form-field">
                               <i class="las la-map-marker"></i>
-                              <input type="text" id="end-dest" name="end-dest" class="form-control"
-                                  placeholder="End Destination" required>
+                              <input type="text" id="end-dest" formControlName="designation" class="form-control"
+                                  placeholder="designation" required>
                           </div>
                           <div class="form-field">
                               <i class="las la-calendar"></i>
-                              <input type="text" id="ride-date" name="ride-date" class="form-control date-picker"
-                                  placeholder="Select Date" required>
+                              <input type="text" id="ride-date" formControlName="address" class="form-control "
+                                  placeholder="address" required>
+                          </div>
+                          <div class="form-field">
+                              <i class="las la-calendar"></i>
+                              <input type="text" id="faxNumber" formControlName="faxNumber" class="form-control "
+                                  placeholder="faxNumber" required>
                           </div>
                           <div class="form-field">
                               <i class="las la-clock"></i>
-                              <input type="text" id="ride-time" name="ride-time" class="form-control time-picker"
-                                  placeholder="Select Time" required>
+                              <input type="text" id="ride-time" formControlName="mobile" class="form-control time-picker"
+                                  placeholder="mobile" required>
                           </div>
                           <div class="form-field">
-                              <button id="submit" class="default-btn" type="submit">Book Your Taxi</button>
+                              <i class="las la-clock"></i>
+                              <input type="text" id="ride-time" formControlName="telephone" class="form-control time-picker"
+                                  placeholder="telephone" required>
+                          </div>
+                          <div class="form-field">
+                              <button id="submit" class="default-btn" type="submit">Resgister</button>
                           </div>
                       </div>
                       <div id="form-messages" class="alert" role="alert"></div>
