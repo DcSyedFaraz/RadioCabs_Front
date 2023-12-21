@@ -1,5 +1,3 @@
-
-
 <div class="app-wrapper">
 
   <!-- Sidenav Menu Start -->
@@ -17,23 +15,29 @@
         <li class="menu-title">Menu</li>
 
         <li class="menu-item">
-          <a href="index.html" class="menu-link waves-effect">
+          <a routerLink="/company" class="menu-link waves-effect">
             <span class="menu-icon"><i class="ph-duotone ph-house"></i></span>
             <span class="menu-text">Company Dashboard </span>
             <span class="badge bg-primary rounded ms-auto">01</span>
           </a>
         </li>
-
+        <li class="menu-title">Custom</li>
         <li class="menu-item">
-          <a routerLink="company" class="menu-link waves-effect">
+          <a routerLink="advertisment" routerLinkActive="active" class="menu-link waves-effect">
             <span class="menu-icon"><i class="ph-duotone ph-calendar"></i></span>
-            <span class="menu-text"> Calendar </span>
+            <span class="menu-text"> Advertisments </span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a routerLink="driver" routerLinkActive="active" class="menu-link waves-effect">
+            <span class="menu-icon"><i class="ph-duotone ph-calendar"></i></span>
+            <span class="menu-text"> Drivers </span>
           </a>
         </li>
 
-        <li class="menu-title">Custom</li>
+
         <li class="menu-item text-red-700">
-          <a  class="menu-link waves-effect " (click)="logout()">
+          <a class="menu-link waves-effect " (click)="logout()">
             <span class="menu-icon"><i class="ph-duotone ph-sign-in text-red-700"></i></span>
             <span class="menu-text text-red-700"> Logout </span>
           </a>
@@ -168,7 +172,3 @@
   <!-- End Page content -->
 
 </div>
-
-
-
-

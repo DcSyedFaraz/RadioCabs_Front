@@ -1,0 +1,66 @@
+<main class="p-6">
+<!-- Import Angular Material Button Module -->
+<button mat-raised-button routerLink="create" color="primary" class="my-2">
+  Create Driver
+</button>
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 bg-slate-400 ">
+
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef> Mobile </th>
+      <td mat-cell *matCellDef="let element"> {{element.Mobile}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+    </ng-container>
+    <ng-container matColumnDef="experience">
+      <th mat-header-cell *matHeaderCellDef> Experience </th>
+      <td mat-cell *matCellDef="let element"> {{element.Experience}} </td>
+    </ng-container>
+    <ng-container matColumnDef="companyName">
+      <th mat-header-cell *matHeaderCellDef> Company </th>
+      <td mat-cell *matCellDef="let element"> {{element.User?.UserName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element" class="flex justify-between">
+        <a routerLink="edit/{{element.Id}}" class="bg-green-500 mx-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Edit</a>
+
+
+        <button (click)="deleteItem($event,element.Id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+          Delete
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+</main>

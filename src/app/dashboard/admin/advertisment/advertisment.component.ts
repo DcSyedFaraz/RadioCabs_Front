@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
@@ -9,12 +10,12 @@ import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-advertisment',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, CommonModule],
+  imports: [MatTableModule, MatIconModule, RouterLink, CommonModule,MatButtonModule],
   templateUrl: './advertisment.component.html',
   styleUrls: ['./advertisment.component.css'],
 })
 export class AdvertismentComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'name', 'mobile', 'Designation', 'telephone', 'description', 'actions'];
+  displayedColumns: string[] = ['Id', 'name', 'mobile', 'Designation', 'telephone', 'description','Company', 'actions'];
   dataSource: any;
 
   constructor(private service: AdminService, private toastr: ToastrService) { }
@@ -53,20 +54,5 @@ export class AdvertismentComponent implements OnInit {
     }
   }
 
-  // fetchData(): void {
-  //   this.service.getData().subscribe(
-  //     (result: any[]) => {
-  //       // Assuming the API returns an array similar to ELEMENT_DATA
-  //       this.dataSource = result.map(item => ({
-  //         position: item.position,
-  //         name: item.name,
-  //         weight: item.weight,
-  //         symbol: item.symbol
-  //       }));
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   );
-  // }
+
 }

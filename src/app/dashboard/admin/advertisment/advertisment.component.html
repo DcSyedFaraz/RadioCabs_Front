@@ -1,4 +1,7 @@
 <main class="p-6">
+  <button mat-raised-button routerLink="create" color="primary" class="my-2">
+    Create AD
+  </button>
 
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 bg-slate-400">
@@ -32,6 +35,10 @@
     <ng-container matColumnDef="telephone">
       <th mat-header-cell *matHeaderCellDef> Telephone </th>
       <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Company">
+      <th mat-header-cell *matHeaderCellDef> Company </th>
+      <td mat-cell *matCellDef="let element"> {{element.user?.userName}} </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">

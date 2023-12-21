@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -8,11 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./compdash.component.css']
 })
 export class CompdashComponent {
-  constructor(private authService: AuthService, private toastr: ToastrService) {}
+  constructor(private authService: AuthService, private toastr: ToastrService,private router:Router) {}
 
   logout(): void {
-    this.toastr.success("Logout Successfully");
-
     this.authService.logout();
+    this.toastr.success("Logout Successfully");
+    this.router.navigate(["home"])
   }
 }
