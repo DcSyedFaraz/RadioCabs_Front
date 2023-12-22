@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, type OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/services/auth.service';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
-  selector: 'app-companylist',
+  selector: 'app-adlist',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,10 +15,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ReactiveFormsModule,
     MatFormFieldModule, MatSelectModule
   ],
-  templateUrl: './companylist.component.html',
-  styleUrls: ['./companylist.component.css'],
+  templateUrl: './adlist.component.html',
+  styleUrls: ['./adlist.component.css'],
 })
-export class CompanylistComponent implements OnInit {
+export class AdlistComponent implements OnInit {
   selectedTeam = '';
 	onSelected(teams:any) {
 		this.selectedTeam = teams;
@@ -30,9 +30,9 @@ export class CompanylistComponent implements OnInit {
   dataSource: any;
   registerForm: FormGroup;
 
-  constructor(private service: AuthService, private toastr: ToastrService, private fb: FormBuilder) {
+  constructor(private service: AdminService, private toastr: ToastrService, private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required]],
+      CompanyName: ['', [Validators.required]],
       contactPerson: ['', [Validators.required]],
       designation: ['', [Validators.required]],
       address: ['', [Validators.required]],
@@ -40,8 +40,8 @@ export class CompanylistComponent implements OnInit {
       telephone: ['', []],
       faxNumber: ['', []],
       email: ['', [Validators.required, Validators.email]],
-      membershipType: [],
-      paymentType: [],
+      Description: [''],
+      paymentType: [Number],
     });
   }
 
@@ -52,7 +52,7 @@ export class CompanylistComponent implements OnInit {
   onSubmit() {
     console.log('Form submitted:', this.registerForm.value);
 
-    this.service.register(this.registerForm.value).subscribe(
+    this.service.createAD(this.registerForm.value).subscribe(
       (a:any) => {
         console.log("Register Data Successfully ", a);
         this.toastr.success(a.message)
@@ -73,7 +73,7 @@ export class CompanylistComponent implements OnInit {
   }
 
   gettingdata() {
-    this.service.getData()
+    this.service.getAD()
       .subscribe((data) => {
         console.log(data);
 

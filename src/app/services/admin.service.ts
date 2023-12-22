@@ -45,4 +45,18 @@ export class AdminService {
   updateDriver(ID: any,data: any) {
     return this.http.put(this.appUrl + "api/Drivers/"+ID, data);
   }
+
+  // Feedback
+  getfeedback() {
+    return this.http.get(this.appUrl + "api/Feedback")
+  }
+
+  createfeedback(data: any) {
+    return this.http.post(this.appUrl + "api/Feedback",data)
+  }
+
+  deletefeedback(ID: any){
+    return this.http.delete(this.appUrl + 'api/Feedback/'+ID)
+  }
+
 }

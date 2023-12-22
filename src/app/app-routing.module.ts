@@ -17,6 +17,8 @@ import { CreateADComponent } from './dashboard/admin/advertisment/createAD/creat
 import { FrontlayoutComponent } from './front/frontlayout/frontlayout.component';
 import { HomeComponent } from './front/home/home.component';
 import { CompanylistComponent } from './front/companylist/companylist.component';
+import { AdlistComponent } from './front/adlist/adlist.component';
+import { FeedbackComponent } from './front/feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,6 +27,8 @@ const routes: Routes = [
     children: [
       { path: "", component: HomeComponent },
       { path: "companyList", component: CompanylistComponent },
+      { path: "adList", component: AdlistComponent },
+      { path: "feedback", component: FeedbackComponent },
       { path: "login", component: LoginComponent },
     ]
   },

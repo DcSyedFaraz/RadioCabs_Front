@@ -1,0 +1,119 @@
+<section class="contact-section bd-bottom padding">
+  <div class="map"></div>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+              <div class="contact-details-wrap">
+                  <div class="contact-title">
+                      <h2>Have Any <span>Questions?</span></h2>
+                      <p>Get in touch to discuss your employee wellbeing needs today. Please give us a call, drop us an email or fill out the contact form.</p>
+                  </div>
+                  <ul class="contact-details">
+                      <li><i class="fas fa-map-marker-alt"></i>962 Fifth Avenue,<br> New York, NY10022</li>
+                      <li><i class="fas fa-envelope"></i>hello@themeaster.net <br>Yourmail@gmail.com</li>
+                      <li><i class="fas fa-phone"></i>(+123) 456 789 101 <br>+1-302-123-4567</li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="contact-form">
+                  <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" id="ajax_contact" class="form-horizontal">
+                      <div class="contact-title">
+                          <h2>Contact With Us! <span></span></h2>
+                      </div>
+                      <div class="contact-form-group">
+                          <div class="form-field">
+                              <input type="text" id="firstname" formControlName="Name" class="form-control" placeholder="First Name" required>
+                          </div>
+                          <div class="form-field">
+                              <input type="text" id="lastname" formControlName="MobileNumber" class="form-control" placeholder="Last Name" required>
+                          </div>
+                          <div class="form-field">
+                              <input type="email" id="email" formControlName="Email" class="form-control" placeholder="Email" required>
+                          </div>
+                          <div class="form-field">
+                              <input type="text" id="phone" formControlName="City" class="form-control" placeholder="Phone Number" required>
+                          </div>
+                          <div class="form-field " style="grid-column: span 2 / span 2; display: grid;">
+                            <!-- <select formControlName="Type"  class="form-control">
+                              <option disabled selected hidden>Select</option>
+                              <option value="0">Complaint</option>
+                              <option value="1">Suggestion</option>
+                              <option value="2">Compliment</option>
+                          </select> -->
+                          <mat-form-field>
+                            <mat-label>Select an option</mat-label>
+                            <mat-select  formControlName="Type" >
+                              <mat-option value="Complaint">Complaint</mat-option>
+                              <mat-option value="Suggestion">Suggestion</mat-option>
+                              <mat-option value="Compliment">Compliment</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          </div>
+                          <div class="form-field message">
+                              <textarea id="message" formControlName="Description" cols="30" rows="4" class="form-control" placeholder="Message" required></textarea>
+                          </div>
+                          <div class="form-field">
+                              <button id="submit" class="default-btn" type="submit">Send Massage</button>
+                          </div>
+                      </div>
+                      <div id="form-messages" class="alert" role="alert"></div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!--/.contact-section-->
+
+<section class="branches-section bg-grey padding">
+  <div class="container">
+      <div class="row branches-lists">
+          <div class="col-lg-3 col-sm-6 sm-padding">
+              <div class="branches-list">
+                  <h3>Sydney (Head Office)</h3>
+                  <ul>
+                      <li>1 Epping Road</li>
+                      <li>North Ryde, NSW 2113</li>
+                      <li><a href="#">+61 2 9870 7689</a></li>
+                      <li><a href="#">email@example.com</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 sm-padding">
+              <div class="branches-list">
+                  <h3>Brisbane</h3>
+                  <ul>
+                      <li>1 Epping Road</li>
+                      <li>North Ryde, NSW 2113</li>
+                      <li><a href="#">+61 2 9870 7689</a></li>
+                      <li><a href="#">email@example.com</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 sm-padding">
+              <div class="branches-list">
+                  <h3>Hobart</h3>
+                  <ul>
+                      <li>1 Epping Road</li>
+                      <li>North Ryde, NSW 2113</li>
+                      <li><a href="#">+61 2 9870 7689</a></li>
+                      <li><a href="#">email@example.com</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 sm-padding">
+              <div class="branches-list">
+                  <h3>Melbourne</h3>
+                  <ul>
+                      <li>1 Epping Road</li>
+                      <li>North Ryde, NSW 2113</li>
+                      <li><a href="#">+61 2 9870 7689</a></li>
+                      <li><a href="#">email@example.com</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!--/.branches-section-->
