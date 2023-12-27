@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, type OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AdminService } from 'src/app/services/admin.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
-  selector: 'app-adlist',
+  selector: 'app-driver-list',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,10 +15,10 @@ import { AdminService } from 'src/app/services/admin.service';
     ReactiveFormsModule,
     MatFormFieldModule, MatSelectModule
   ],
-  templateUrl: './adlist.component.html',
-  styleUrls: ['./adlist.component.css'],
+  templateUrl: './DriverList.component.html',
+  styleUrls: ['./DriverList.component.css'],
 })
-export class AdlistComponent implements OnInit {
+export class DriverListComponent implements OnInit {
   selectedTeam = '';
   onSelected(teams: any) {
     this.selectedTeam = teams;
@@ -32,13 +32,13 @@ export class AdlistComponent implements OnInit {
 
   constructor(private service: AdminService, private toastr: ToastrService, private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      CompanyName: ['', [Validators.required]],
+      Experience: ['', [Validators.required]],
       contactPerson: ['', [Validators.required]],
-      designation: ['', [Validators.required]],
+      Name: ['', [Validators.required]],
       address: ['', [Validators.required]],
       mobile: ['', [Validators.required]],
       telephone: ['', []],
-      faxNumber: ['', []],
+      City: ['', []],
       email: ['', [Validators.required, Validators.email]],
       Description: [''],
       paymentType: [Number],
@@ -52,7 +52,7 @@ export class AdlistComponent implements OnInit {
   onSubmit() {
     console.log('Form submitted:', this.registerForm.value);
 
-    this.service.createAD(this.registerForm.value).subscribe(
+    this.service.createDriver(this.registerForm.value).subscribe(
       (a: any) => {
         console.log("Register Data Successfully ", a);
         this.toastr.success(a.message)
@@ -64,8 +64,6 @@ export class AdlistComponent implements OnInit {
         this.toastr.error(error.error.message)
         console.log(error);
         console.log(error.error.message);
-        const selectedMembershipType = this.registerForm.value.membershipType;
-        console.log('Selected Membership Type:', selectedMembershipType);
       }
     );
     this.registerForm.reset();
@@ -73,7 +71,7 @@ export class AdlistComponent implements OnInit {
   }
 
   gettingdata() {
-    this.service.frontAD()
+    this.service.frontDriver()
       .subscribe((data) => {
         console.log(data);
 

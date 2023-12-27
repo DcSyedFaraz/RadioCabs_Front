@@ -1,0 +1,42 @@
+<!-- Loader -->
+<div class="loader-container" *ngIf="loading">
+  <mat-spinner diameter="50" color="accent"></mat-spinner>
+</div>
+
+<mat-card *ngIf="details">
+  <mat-card-header>
+    <mat-card-title>Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="details-grid">
+      <div class="detail-item">
+        <div class="detail-label">ID:</div>
+        <div class="detail-value">{{ details?.Id }}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Name:</div>
+        <div class="detail-value">{{ details?.Name }}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Mobile Number:</div>
+        <div class="detail-value">{{ details?.MobileNumber }}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Email:</div>
+        <div class="detail-value">{{ details?.Email }}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">City:</div>
+        <div class="detail-value">{{ details?.City }}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Type:</div>
+        <div class="detail-value">{{ details?.Type }}</div>
+      </div>
+      <div class="detail-item full-width">
+        <div class="detail-label">Description:</div>
+        <div class="detail-value">{{ details?.Description }}</div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

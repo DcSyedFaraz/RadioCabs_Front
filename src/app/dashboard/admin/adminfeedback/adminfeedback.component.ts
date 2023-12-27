@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, type OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
@@ -7,14 +8,16 @@ import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
-  selector: 'app-driver',
+  selector: 'app-adminfeedback',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, CommonModule],
-  templateUrl: './driver.component.html',
-  styleUrls: ['./driver.component.css'],
+  imports: [
+    MatTableModule, MatIconModule, RouterLink, CommonModule, MatButtonModule
+  ],
+  templateUrl: './adminfeedback.component.html',
+  styleUrls: ['./adminfeedback.component.css'],
 })
-export class DriverComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'mobile', 'address', 'email','experience', 'description','companyName', 'actions'];
+export class AdminfeedbackComponent implements OnInit {
+  displayedColumns: string[] = ['Id', 'name', 'mobile', 'email', 'city', 'type', 'actions'];
   dataSource: any;
 
   constructor(private service: AdminService, private toastr: ToastrService) { }
@@ -24,7 +27,7 @@ export class DriverComponent implements OnInit {
   }
 
   gettingdata() {
-    this.service.getDriver()
+    this.service.getFeed()
       .subscribe((data) => {
 
         this.dataSource = data;
@@ -35,15 +38,13 @@ export class DriverComponent implements OnInit {
         })
   }
 
-
-
   deleteItem(event: any, id: any): void {
     console.log(id);
 
     if (confirm('are you sure?')) {
       event.target.innerText = "Deleting...";
 
-      this.service.deleteDriver(id).subscribe((res: any) => {
+      this.service.deleteFeed(id).subscribe((res: any) => {
         this.toastr.success(res.message)
         console.log(res);
 
@@ -52,6 +53,5 @@ export class DriverComponent implements OnInit {
 
     }
   }
-
 
 }

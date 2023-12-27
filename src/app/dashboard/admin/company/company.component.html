@@ -45,7 +45,7 @@
         <a routerLink="edit/{{element.Id}}" class="bg-green-500 mx-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Edit</a>
 
 
-        <button (click)="deleteItem($event,element.Id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+        <button *ngIf="isAdmin" (click)="deleteItem($event,element.Id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
           <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" >Delete</mat-icon> -->
           Delete
         </button>

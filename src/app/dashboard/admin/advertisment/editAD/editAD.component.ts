@@ -4,6 +4,7 @@ import { MatTable } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-edit-ad',
@@ -14,7 +15,7 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class EditADComponent implements OnInit {
 
-  constructor(private service: AdminService, private toastr: ToastrService, private router: ActivatedRoute, private routers: Router) { }
+  constructor(private service: AdminService, private services: AuthService, private toastr: ToastrService, private router: ActivatedRoute, private routers: Router) { }
   AdvertId!: any;
   Advert!: any;
 
@@ -31,7 +32,17 @@ export class EditADComponent implements OnInit {
     this.service.updateAD(this.AdvertId, this.Advert).subscribe(
       (result:any) => {
         this.toastr.success(result.message);
-        this.routers.navigate(["/admin/advertisment"]);
+
+        const roles = this.services.getUserRoles();
+        if (roles.includes('admin')) {
+
+          this.routers.navigate(["admin/advertisment"]);
+
+        } else if (roles.includes('user')) {
+
+          this.routers.navigate(["user"]);
+
+        }
 
       },
       (error) => {

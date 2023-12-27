@@ -55,7 +55,16 @@ export class AuthService {
   login(data: any) {
     return this.http.post(this.appUrl + "Authenticate/login", data);
   }
+
+  // Company
+  status(id: any) {
+    return this.http.get(this.appUrl + "api/Company/decline/"+id );
+  }
+
   getData() {
+    return this.http.get(this.appUrl + "api/Company")
+  }
+  frontData() {
     return this.http.get(this.appUrl + "api/Company/Companies")
   }
 

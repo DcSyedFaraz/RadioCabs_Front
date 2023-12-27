@@ -19,6 +19,12 @@ import { HomeComponent } from './front/home/home.component';
 import { CompanylistComponent } from './front/companylist/companylist.component';
 import { AdlistComponent } from './front/adlist/adlist.component';
 import { FeedbackComponent } from './front/feedback/feedback.component';
+import { RequestsComponent } from './dashboard/admin/Requests/Requests.component';
+import { DriverListComponent } from './front/DriverList/DriverList.component';
+import { SearchComponent } from './front/search/search.component';
+import { DriverdashComponent } from './dashboard/driverdash/driverdash.component';
+import { AdminfeedbackComponent } from './dashboard/admin/adminfeedback/adminfeedback.component';
+import { ShowfeedComponent } from './dashboard/admin/adminfeedback/showfeed/showfeed.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,7 +34,9 @@ const routes: Routes = [
       { path: "", component: HomeComponent },
       { path: "companyList", component: CompanylistComponent },
       { path: "adList", component: AdlistComponent },
+      { path: "drivers", component: DriverListComponent },
       { path: "feedback", component: FeedbackComponent },
+      { path: "search", component: SearchComponent },
       { path: "login", component: LoginComponent },
     ]
   },
@@ -40,6 +48,7 @@ const routes: Routes = [
     canActivate: [authGuard],
     data: { expectedRole: 'admin' },
     children: [
+      { path: "requests", component: RequestsComponent },
       { path: "company", component: CompanyComponent },
       { path: "company/edit/:id", component: EditComponent },
       { path: "advertisment", component: AdvertismentComponent },
@@ -48,6 +57,8 @@ const routes: Routes = [
       { path: "driver", component: DriverComponent },
       { path: "driver/create", component: CreateDriverComponent },
       { path: "driver/edit/:id", component: EditDriverComponent },
+      { path: "feedback", component: AdminfeedbackComponent },
+      { path: "feedback/show/:id", component: ShowfeedComponent },
     ]
   },
 
@@ -55,18 +66,27 @@ const routes: Routes = [
     path: "user", component: UserdashComponent,
     canActivate: [authGuard],
     data: { expectedRole: 'user' },
+    children: [
+      { path: "", component: AdvertismentComponent },
+      { path: "edit/:id", component: EditADComponent },
+    ]
+  },
+  {
+    path: "driver", component: DriverdashComponent,
+    canActivate: [authGuard],
+    data: { expectedRole: 'driver' },
+    children: [
+      { path: "", component: DriverComponent },
+      { path: "edit/:id", component: EditDriverComponent },
+    ]
   },
   {
     path: "company", component: CompdashComponent,
     canActivate: [authGuard],
     data: { expectedRole: 'company' },
     children: [
-      { path: "advertisment", component: AdvertismentComponent },
-      { path: "advertisment/create", component: CreateADComponent },
-      { path: "advertisment/edit/:id", component: EditADComponent },
-      { path: "driver", component: DriverComponent },
-      { path: "driver/create", component: CreateDriverComponent },
-      { path: "driver/edit/:id", component: EditDriverComponent },
+      { path: "", component: CompanyComponent },
+      { path: "edit/:id", component: EditComponent },
     ]
   },
 

@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-driver',
@@ -15,13 +16,25 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./driver.component.css'],
 })
 export class DriverComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'mobile', 'address', 'email','experience', 'description','companyName', 'actions'];
+  isAdmin: boolean = false;
+  displayedColumns: string[] = ['id', 'name', 'mobile', 'email','experience', 'description','companyName', 'actions'];
   dataSource: any;
 
-  constructor(private service: AdminService, private toastr: ToastrService) { }
+  constructor(private service: AdminService, private toastr: ToastrService, private authService: AuthService) { }
 
-  ngOnInit(): void {
-    this.gettingdata();
+  async ngOnInit(): Promise<void> {
+    await this.gettingdata();
+    this.checkUserRole();
+  }
+
+  checkUserRole(): void {
+    const userRole = this.authService.getUserRoles();
+    if (userRole.includes('admin')) {
+
+      this.isAdmin = true;
+
+    }
+
   }
 
   gettingdata() {

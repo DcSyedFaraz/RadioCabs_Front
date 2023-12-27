@@ -58,12 +58,17 @@ export class CreateADComponent implements OnInit {
 
         } else if (roles.includes('user')) {
 
-          this.routers.navigate(["user/advertisment"]);
+          this.routers.navigate(["user"]);
 
-        } else {
+        } else if (roles.includes('company')) {
 
           this.routers.navigate(["company/advertisment"]);
+
+        } else if (roles.includes('driver')) {
+
+          this.routers.navigate(["driver/advertisment"]);
         }
+
 
       },
       (error) => {

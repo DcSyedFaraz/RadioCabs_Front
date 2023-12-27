@@ -1,0 +1,20 @@
+<app-table (refreshDataEvent)="refreshData()"
+      [data]="companies"
+      [tableName]="'Companies'"
+      [loading]="loading"
+      [columns]="['id','name','membershipType','paymentType', 'status']"
+    ></app-table>
+
+    <app-table (refreshDataEvent)="refreshData()"
+      [data]="advertisements"
+      [tableName]="'Advertisements'"
+      [loading]="loading"
+      [columns]="['id','companyName','paymentType', 'status']"
+    ></app-table>
+
+    <app-table (refreshDataEvent)="refreshData()"
+      [data]="drivers"
+      [tableName]="'Drivers'"
+      [loading]="loading"
+      [columns]="['id','name','paymentType','email', 'status']"
+    ></app-table>

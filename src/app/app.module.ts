@@ -18,6 +18,7 @@ import { ModuleModule } from './module/module.module';
 import { CompanyComponent } from './dashboard/admin/company/company.component';
 import { EditComponent } from './dashboard/admin/company/edit/edit.component';
 import { EditADComponent } from './dashboard/admin/advertisment/editAD/editAD.component';
+import { DriverdashComponent } from './dashboard/driverdash/driverdash.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditADComponent } from './dashboard/admin/advertisment/editAD/editAD.co
     UserdashComponent,
     CompdashComponent,
     EditComponent,
-    EditADComponent
+    EditADComponent,
+    DriverdashComponent
   ],
   imports: [
     ModuleModule,

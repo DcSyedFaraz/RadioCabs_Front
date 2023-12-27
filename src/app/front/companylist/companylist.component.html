@@ -1,31 +1,41 @@
+<style>
+  .booking-form[_ngcontent-ng-c1380717601] .niceSelect[_ngcontent-ng-c1380717601] {
+    color: #1c1b1b !important;
+
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #333 !important;
+  }
+</style>
 <section class="booking-section">
   <div class="container">
-      <div class="row pos-relative padding">
-          <div class="col-lg-4">
-              <div class="booking-car wow fade-in-left" data-wow-delay="200ms"></div>
+    <div class="row pos-relative padding">
+      <div class="col-lg-4">
+        <div class="booking-car wow fade-in-left" data-wow-delay="200ms"></div>
+      </div>
+      <div class="col-lg-8">
+        <div class="booking-wrap">
+          <div class="section-heading mb-30">
+            <h4><span></span>Online Registering</h4>
+            <h2 class="white">Register Your Company</h2>
           </div>
-          <div class="col-lg-8">
-              <div class="booking-wrap">
-                  <div class="section-heading mb-30">
-                      <h4><span></span>Online Registering</h4>
-                      <h2 class="white">Register Your Company</h2>
-                  </div>
-                  <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" >
-                      <div class="booking-form">
-                          <div class="form-field">
-                              <i class="las la-user-tie"></i>
-                              <input type="text" id="full-name" formControlName="name" class="form-control"
-                                  placeholder="Your Name" required>
-                          </div>
-                          <div class="form-field">
-                              <i class="las la-envelope-open"></i>
-                              <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email"
-                                  required>
-                          </div>
+          <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+            <div class="booking-form">
+              <div class="form-field">
+                <i class="las la-user-tie"></i>
+                <input type="text" id="full-name" formControlName="name" class="form-control" placeholder="Your Name"
+                  required>
+              </div>
+              <div class="form-field">
+                <i class="las la-envelope-open"></i>
+                <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email"
+                  required>
+              </div>
 
 
 
-                          <!-- <div class="form-field">
+              <!-- <div class="form-field">
                               <i class="las la-tags"></i>
                               <select formControlName="membershipType"  class="niceSelect">
                                   <option disabled selected hidden>Membership Type</option>
@@ -34,74 +44,85 @@
                                   <option value="2">Premium</option>
                               </select>
                           </div> -->
-                          <div class="form-field">
+
+              <!-- <div class="form-field">
                               <i class="las la-user-friends"></i>
                               <select formControlName="paymentType" class="" #teams (change)="onSelected(teams)">
                                   <option disabled selected hidden>Payement</option>
                                   <option value="0">Monthly</option>
                                   <option value="1">Quarterly</option>
                               </select>
-                          </div>
-                          <div class="form-field">
-                              <i class="las la-map-marker"></i>
-                              <input type="text" id="start-dest" formControlName="contactPerson" class="form-control"
-                                  placeholder="Contact Person" required>
-                          </div>
-                          <div class="form-field">
-                              <i class="las la-map-marker"></i>
-                              <input type="text" id="end-dest" formControlName="designation" class="form-control"
-                                  placeholder="designation" required>
-                          </div>
-                          <div class="form-field">
-                              <i class="las la-calendar"></i>
-                              <input type="text" id="ride-date" formControlName="address" class="form-control "
-                                  placeholder="address" required>
-                          </div>
-                          <div class="form-field">
-                              <i class="las la-calendar"></i>
-                              <input type="text" id="faxNumber" formControlName="faxNumber" class="form-control "
-                                  placeholder="faxNumber" required>
-                          </div>
-                          <div class="form-field">
-                              <i class="las la-clock"></i>
-                              <input type="text" id="ride-time" formControlName="mobile" class="form-control time-picker"
-                                  placeholder="mobile" required>
-                          </div>
-                          <div class="form-field">
-                              <i class="las la-clock"></i>
-                              <input type="text" id="ride-time" formControlName="telephone" class="form-control time-picker"
-                                  placeholder="telephone" required>
-                          </div>
-                          <mat-form-field>
-                            <mat-label>Select an option</mat-label>
-                            <mat-select  formControlName="membershipType" class="niceSelect">
-                              <mat-option>None</mat-option>
-                              <mat-option value="0">Free</mat-option>
-                              <mat-option value="1">Standard</mat-option>
-                              <mat-option value="2">Premium</mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                          <div class="form-field">
-                              <button  class="default-btn" type="submit">Resgister</button>
-                          </div>
-                      </div>
-                      <div id="form-messages" class="alert" role="alert"></div>
-                  </form><!-- Booking Form -->
+                          </div> -->
+              <div class="form-field">
+                <i class="las la-map-marker"></i>
+                <input type="text" id="start-dest" formControlName="contactPerson" class="form-control"
+                  placeholder="Contact Person" required>
               </div>
-          </div>
+              <div class="form-field">
+                <i class="las la-map-marker"></i>
+                <input type="text" id="end-dest" formControlName="designation" class="form-control"
+                  placeholder="designation" required>
+              </div>
+              <div class="form-field">
+                <i class="las la-calendar"></i>
+                <input type="text" id="ride-date" formControlName="address" class="form-control " placeholder="address"
+                  required>
+              </div>
+              <div class="form-field">
+                <i class="las la-calendar"></i>
+                <input type="text" id="faxNumber" formControlName="faxNumber" class="form-control "
+                  placeholder="faxNumber" required>
+              </div>
+              <div class="form-field">
+                <i class="las la-clock"></i>
+                <input type="text" id="ride-time" formControlName="mobile" class="form-control time-picker"
+                  placeholder="mobile" required>
+              </div>
+              <div class="form-field">
+                <i class="las la-clock"></i>
+                <input type="text" id="ride-time" formControlName="telephone" class="form-control time-picker"
+                  placeholder="telephone" required>
+              </div>
+              <br>
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select formControlName="membershipType" class="niceSelect">
+                  <mat-option value="Free">Free</mat-option>
+                  <mat-option value="Standard">Standard</mat-option>
+                  <mat-option value="Premium">Premium</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select class="text-dark" formControlName="paymentType" class="niceSelect">
+                  <mat-option class="text-dark" value="Monthly">Monthly</mat-option>
+                  <mat-option class="text-dark" value="Quarterly">Quarterly</mat-option>
+                </mat-select>
+                <mat-hint class="d-none" align="end">Your hint text here</mat-hint>
+              </mat-form-field>
+              <div class="form-field">
+                <button class="default-btn" type="submit">Resgister</button>
+              </div>
+            </div>
+            <div id="form-messages" class="alert" role="alert"></div>
+          </form><!-- Booking Form -->
+        </div>
       </div>
+    </div>
   </div>
 </section><!--/.booking-section-->
-
+<div class="loader-container d-flex justify-content-center align-items-center mt-3" *ngIf="loading">
+  <mat-spinner ></mat-spinner>
+</div>
 <section class="pricing-section bg-grey bd-bottom padding">
   <div class="container">
-      <div class="section-heading text-center mb-40 wow fade-in-bottom" data-wow-delay="200ms">
-          <h4><span></span>Registered Companies!</h4>
-          <!-- <h2>Choose Your Taxi to Ride!</h2> -->
-          <p>We successfully cope with tasks of varying complexity, provide long-term <br>guarantees and regularly
-              master new technologies.</p>
-      </div><!--/.section-heading-->
-      <!-- <ul class="nav pricing-tab-menu" id="pricing-tab" role="tablist">
+    <div class="section-heading text-center mb-40 wow fade-in-bottom" data-wow-delay="200ms">
+      <h4><span></span>Registered Companies!</h4>
+      <!-- <h2>Choose Your Taxi to Ride!</h2> -->
+      <p>We successfully cope with tasks of varying complexity, provide long-term <br>guarantees and regularly
+        master new technologies.</p>
+    </div><!--/.section-heading-->
+    <!-- <ul class="nav pricing-tab-menu" id="pricing-tab" role="tablist">
           <li class="nav-item" role="presentation">
               <button class="nav-link active" id="hybrid-taxi" data-bs-toggle="tab"
                   data-bs-target="#hybrid-taxi-content" type="button" role="tab"
@@ -118,37 +139,41 @@
                   aria-controls="limousine-taxi-content" aria-selected="false">Limousine Taxi</button>
           </li>
       </ul> -->
-      <!--Tab Menu-->
-      <div  class="tab-content" id="pricing-tab-content">
-          <div class="tab-pane fade show active" id="hybrid-taxi-content" role="tabpanel"
-              aria-labelledby="hybrid-taxi-content">
-              <div class="row">
-                  <div class="col-lg-4 col-md-6 sm-padding my-2" *ngFor="let item of dataSource">
-                      <div class="pricing-item">
-                          <div class="pricing-head-wrap">
-                              <div class="pricing-car">
-                                  <img src="assets/img/pricing-car.png" alt="car">
-                                  <div class="price">$2.50/km</div>
-                              </div>
-                          </div>
-                          <div class="pricing-head">
-                              <h3><a href="taxi-details.html">{{ item.Name }}</a></h3>
-                              <span class="location">{{item.Address}}</span>
-                          </div>
-                          <ul class="pricing-list">
-                              <li>Contact Person: <span>{{item.ContactPerson}}</span></li>
-                              <li>Designation: <span>{{item.Designation}}</span></li>
-                              <li>Email: <span>{{item.Email}}</span></li>
-                              <li>Mobile: <span>{{item.Mobile}}</span></li>
-                              <!-- <li><a href="book-taxi.html" class="default-btn">Book Taxi Now</a></li> -->
-                          </ul>
-                      </div>
-                  </div>
+    <!--Tab Menu-->
 
+    <!-- Loader -->
+
+
+    <div class="tab-content" id="pricing-tab-content">
+      <div class="tab-pane fade show active" id="hybrid-taxi-content" role="tabpanel"
+        aria-labelledby="hybrid-taxi-content">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 sm-padding my-2" *ngFor="let item of dataSource">
+            <div class="pricing-item">
+              <div class="pricing-head-wrap">
+                <div class="pricing-car">
+                  <img src="assets/img/pricing-car.png" alt="car">
+                  <div class="price">$2.50/km</div>
+                </div>
               </div>
+              <div class="pricing-head">
+                <h3><a href="taxi-details.html">{{ item.Name }}</a></h3>
+                <span class="location">{{item.Address}}</span>
+              </div>
+              <ul class="pricing-list">
+                <li>Contact Person: <span>{{item.ContactPerson}}</span></li>
+                <li>Designation: <span>{{item.Designation}}</span></li>
+                <li>Email: <span>{{item.Email}}</span></li>
+                <li>Mobile: <span>{{item.Mobile}}</span></li>
+                <!-- <li><a (click)="status($event,item.Id)" class="default-btn">Approved</a></li> -->
+              </ul>
+            </div>
           </div>
 
-      </div><!-- Tab Content -->
+        </div>
+      </div>
+
+    </div><!-- Tab Content -->
   </div>
 </section>
 <!--/.pricing-section-->

@@ -1,0 +1,36 @@
+
+<main class="p-6">
+  <!-- Import Angular Material Button Module -->
+  <!-- <button mat-raised-button routerLink="create" color="primary" class="my-2">
+    Create Driver
+  </button> -->
+
+  <div *ngIf="loading; else dataContent">Loading...</div>
+
+    <ng-template #dataContent>
+      <h2>{{ tableName }}</h2>
+      <table mat-table [dataSource]="data" class="mat-elevation-z8">
+        <!-- Define your columns here -->
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
+          <td mat-cell *matCellDef="let row">{{ row[column] }}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary" (click)="approve($event,row,tableName)">Approve</button>
+            <button mat-raised-button color="warn" class="mx-1" (click)="decline($event,row,tableName)">Decline</button>
+          </td>
+        </ng-container>
+
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="columns.concat('actions')"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns.concat('actions')"></tr>
+      </table>
+    </ng-template>
+
+
+
+</main>

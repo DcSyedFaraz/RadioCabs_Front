@@ -1,0 +1,151 @@
+<style>
+  .my-9{
+    margin-bottom: 9rem !important;
+  }
+</style>
+<div class="container mt-5 my-9 ">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm"  (keyup)="search()" />
+        <button class="btn btn-primary" (click)="search()">Search</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center mt-3">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="ms-3">Loading...</div>
+  </div>
+
+</div>
+<!-- Company -->
+<section class="pricing-section bg-grey bd-bottom padding" *ngIf="searchResults.companies && searchResults.companies.length > 0">
+  <div class="container">
+    <div class="section-heading text-center mb-40 wow fade-in-bottom" data-wow-delay="200ms">
+      <h4><span></span>Registered Companies!</h4>
+      <h2>Companies!</h2>
+      <!-- <p>We successfully cope with tasks of varying complexity, provide long-term <br>guarantees and regularly
+              master new technologies.</p> -->
+    </div><!--/.section-heading-->
+
+    <!--Tab Menu-->
+    <div class="tab-content" id="pricing-tab-content">
+      <div class="tab-pane fade show active" id="hybrid-taxi-content" role="tabpanel"
+        aria-labelledby="hybrid-taxi-content">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 sm-padding my-2" *ngFor="let item of searchResults.companies">
+            <div class="pricing-item">
+              <div class="pricing-head-wrap">
+                <div class="pricing-car">
+                  <img src="assets/img/pricing-car.png" alt="car">
+                  <div class="price"></div>
+                </div>
+              </div>
+              <div class="pricing-head">
+                <h3><a href="taxi-details.html">{{ item.name }}</a></h3>
+                <span class="location">{{item.address}}</span>
+              </div>
+              <ul class="pricing-list">
+                <li>Contact Person: <span>{{item.contactPerson}}</span></li>
+                <li>Designation: <span>{{item.designation}}</span></li>
+                <li>Email: <span>{{item.email}}</span></li>
+                <li>Mobile: <span>{{item.mobile}}</span></li>
+                <!-- <li><a (click)="status($event,item.Id)" class="default-btn">Approved</a></li> -->
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- Tab Content -->
+  </div>
+</section>
+
+<section class="pricing-section bg-grey bd-bottom padding" *ngIf="searchResults.drivers && searchResults.drivers.length > 0">
+  <div class="container">
+    <div class="section-heading text-center mb-40 wow fade-in-bottom" data-wow-delay="200ms">
+      <h4><span></span>Registered Drivers!</h4>
+      <h2>Drivers!</h2>
+
+    </div><!--/.section-heading-->
+    <div class="tab-content" id="pricing-tab-content">
+      <div class="tab-pane fade show active" id="hybrid-taxi-content" role="tabpanel"
+        aria-labelledby="hybrid-taxi-content">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 sm-padding my-2" *ngFor="let item of searchResults.drivers">
+            <div class="pricing-item">
+              <div class="pricing-head-wrap">
+                <div class="pricing-car">
+                  <img src="assets/img/pricing-car.png" alt="car">
+                  <!-- <div class="price">$2.50/km</div> -->
+                </div>
+              </div>
+              <div class="pricing-head">
+                <h3><a href="#">{{ item.name }}</a></h3>
+                <span class="location">{{item.address}}</span>
+              </div>
+              <ul class="pricing-list">
+                <li>Description: <span>{{item.description}}</span></li>
+                <li>Experience: <span>{{item.experience}} Years</span></li>
+                <li>City: <span>{{item.city}}</span></li>
+                <li>Mobile: <span>{{item.mobile}}</span></li>
+                <!-- <li><a href="book-taxi.html" class="default-btn">Book Taxi Now</a></li> -->
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- Tab Content -->
+  </div>
+</section>
+
+
+<!-- AD -->
+<section class="pricing-section bg-grey bd-bottom padding" *ngIf="searchResults.advertisements && searchResults.advertisements.length > 0">
+  <div class="container">
+    <div class="section-heading text-center mb-40 wow fade-in-bottom" data-wow-delay="200ms">
+      <h4><span></span>Registered AD!</h4>
+      <h2>Advertisments!</h2>
+      <!-- <p>We successfully cope with tasks of varying complexity, provide long-term <br>guarantees and regularly
+              master new technologies.</p> -->
+    </div><!--/.section-heading-->
+
+    <div class="tab-content" id="pricing-tab-content">
+      <div class="tab-pane fade show active" id="hybrid-taxi-content" role="tabpanel"
+        aria-labelledby="hybrid-taxi-content">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 sm-padding my-2" *ngFor="let item of searchResults.advertisements">
+            <div class="pricing-item">
+              <div class="pricing-head-wrap">
+                <div class="pricing-car">
+                  <img src="assets/img/pricing-car.png" alt="car">
+                  <!-- <div class="price">$2.50/km</div> -->
+                </div>
+              </div>
+              <div class="pricing-head">
+                <h3><a href="#">{{ item.companyName }}</a></h3>
+                <span class="location">{{item.address}}</span>
+              </div>
+              <ul class="pricing-list">
+                <li>Description: <span>{{item.description}}</span></li>
+                <li>Designation: <span>{{item.designation}}</span></li>
+                <li>Email: <span>{{item.email}}</span></li>
+                <li>Mobile: <span>{{item.mobile}}</span></li>
+                <!-- <li><a href="book-taxi.html" class="default-btn">Book Taxi Now</a></li> -->
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- Tab Content -->
+  </div>
+</section>

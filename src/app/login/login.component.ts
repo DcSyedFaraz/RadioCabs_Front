@@ -42,9 +42,13 @@ export class LoginComponent implements OnInit {
 
             this.router.navigate(["user"]);
 
-          } else {
+          } else if (roles.includes('company')) {
 
             this.router.navigate(["company"]);
+
+          } else if (roles.includes('driver')) {
+
+            this.router.navigate(["driver"]);
           }
 
         } else {

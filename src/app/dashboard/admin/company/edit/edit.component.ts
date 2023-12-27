@@ -31,8 +31,17 @@ export class EditComponent implements OnInit {
       (result:any) => {
         this.toastr.success(result.message);
         this.routers.navigate(["/admin/company"]);
-        // Optionally, you can navigate to another page after successful update
-        // this.router.navigate(['/company-list']); // Update the route as needed
+
+        const roles = this.service.getUserRoles();
+        if (roles.includes('admin')) {
+
+          this.routers.navigate(["admin/company"]);
+
+        } else if (roles.includes('company')) {
+
+          this.routers.navigate(["company"]);
+
+        }
       },
       (error) => {
         console.error('Error updating company:', error);

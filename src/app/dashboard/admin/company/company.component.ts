@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -18,18 +19,26 @@ export interface PeriodicElement {
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.css'],
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink],
+  imports: [CommonModule, MatTableModule, MatIconModule, RouterLink],
 })
 export class CompanyComponent implements OnInit {
+  isAdmin: boolean = false;
   displayedColumns: string[] = ['Id', 'name', 'ContactPerson', 'Designation', 'FaxNumber', 'Email', 'actions'];
   dataSource: PeriodicElement[] = [];
 
   constructor(private service: AuthService, private toastr: ToastrService) { }
 
-  ngOnInit(): void {
-    this.gettingdata();
+  async ngOnInit(): Promise<void> {
+    await this.gettingdata();
+    this.checkUserRole();
   }
 
+  checkUserRole(): void {
+    const userRole = this.service.getUserRoles();
+    if (userRole.includes('admin')) {
+      this.isAdmin = true;
+    }
+  }
   gettingdata() {
     this.service.getData()
       .subscribe((data) => {

@@ -6,22 +6,32 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-advertisment',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, CommonModule,MatButtonModule],
+  imports: [MatTableModule, MatIconModule, RouterLink, CommonModule, MatButtonModule],
   templateUrl: './advertisment.component.html',
   styleUrls: ['./advertisment.component.css'],
 })
 export class AdvertismentComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'name', 'mobile', 'Designation', 'telephone', 'description','Company', 'actions'];
+  isAdmin: boolean = false;
+  displayedColumns: string[] = ['Id', 'name', 'mobile', 'Designation', 'telephone', 'description', 'Company', 'actions'];
   dataSource: any;
 
-  constructor(private service: AdminService, private toastr: ToastrService) { }
+  constructor(private service: AdminService, private toastr: ToastrService, private authService: AuthService) { }
 
-  ngOnInit(): void {
-    this.gettingdata();
+  async ngOnInit(): Promise<void> {
+    await this.gettingdata();
+    this.checkUserRole();
+  }
+
+  checkUserRole(): void {
+    const userRole = this.authService.getUserRoles();
+    if (userRole.includes('admin')) {
+      this.isAdmin = true;
+    }
   }
 
   gettingdata() {
